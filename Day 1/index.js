@@ -1,21 +1,19 @@
-import {readFileSync} from 'fs';
+import { readFileSync } from 'fs';
 
-const input = readFileSync('./input.txt',{encoding:'utf8', flag:'r'});
+//Get input from file
+const input = readFileSync('./input.txt', 'utf8');
 
+//Split input into elves and total their calories
 let elves = input.split('\n\n')
-
-elves = elves.map(e => e.split('\n'))
-
-elves = elves.map(e => e.reduce((acc, curr) => (Number(acc) || 0) + (Number(curr) || 0)))
+    .map(e => e.split('\n')
+    .map(Number))
+    .map(e => e.reduce((acc, curr) => acc + curr))
 
 const firstPuzzleSolution = Math.max(...elves)
 
-let topThreeCombined = firstPuzzleSolution;
+const topThree = elves.sort((a, b) => b - a).slice(0, 3);
 
-for(let i = 1; i < 3; i++){
-    elves = elves.filter(e => e != Math.max(...elves))
-    topThreeCombined += Math.max(...elves)
-}
+const secondPuzzleSolution = topThree.reduce((acc, curr) => acc + curr)
 
 console.log(firstPuzzleSolution)
-console.log(topThreeCombined)
+console.log(secondPuzzleSolution)
