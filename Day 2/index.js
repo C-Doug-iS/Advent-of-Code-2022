@@ -41,16 +41,16 @@ const resultDict = {
 
 const secondScores = rounds.map(r => {
     const oppChoice = dict[r[0]];
-    const condition = resultDict[r[1]];
+    const result = resultDict[r[1]];
 
-    if(condition == 3) return condition + oppChoice;
-    if(condition == 6) {
-        if(oppChoice == 3) return condition + 1
-        else return condition + oppChoice + 1
+    if(result == 3) return result + oppChoice;
+    if(result == 6) {
+        if(oppChoice == 3) return result + 1
+        else return result + oppChoice + 1
     }
-    if(condition == 0) {
-        if(oppChoice == 1) return condition + 3
-        else return condition + oppChoice - 1
+    if(result == 0) {
+        if(oppChoice == 1) return result + 3
+        else return result + oppChoice - 1
     }
 })
 
