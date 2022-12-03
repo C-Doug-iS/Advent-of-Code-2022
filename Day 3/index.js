@@ -33,4 +33,5 @@ const badges = groups.map(g => {
 
 const secondPuzzleSolution = badges.reduce((acc, curr) => acc + curr)
 
+console.log(firstPuzzleSolution)
 console.log(secondPuzzleSolution)
