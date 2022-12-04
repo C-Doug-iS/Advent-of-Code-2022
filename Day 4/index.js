@@ -5,8 +5,8 @@ const input = readFileSync('./input.txt', 'utf8');
 
 const pairs = input.split('\n')
     .map(p => p.split(',')
-        .map(r => extendRange(...r.split('-').map(Number))
-            ))
+        .map(r => extendRange(...r.split('-').map(Number)))
+    )
 
 function extendRange(start, end){
     return [...Array((end - start) + 1).keys()].map(e => e + start)
