@@ -37,14 +37,14 @@ for (const line of input) {
 
 const directorySizes = {};
 
-function getSizes(directory, store){
+function getSizes(directory){
     const key = directory.parent ? `${directory.parent.name}-${directory.name}` : `root-/`
     if(directory.subdirectories.size == 0){
-        store[key] = directory.sumOfFiles;
+        directorySizes[key] = directory.sumOfFiles;
     } else {
-        store[key] = directory.sumOfFiles + Array.from(directory.subdirectories.values()).map(dir => getSizes(dir, store)).reduce((acc, curr) => acc + curr)
+        directorySizes[key] = directory.sumOfFiles + Array.from(directory.subdirectories.values()).map(dir => getSizes(dir, directorySizes)).reduce((acc, curr) => acc + curr)
     }
-    return store[key];
+    return directorySizes[key];
 }
 
 getSizes(root, directorySizes);
