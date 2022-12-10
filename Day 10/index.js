@@ -28,8 +28,8 @@ function partTwoSolve(array) {
         const linePosition = (i - 1) % 40;
         const { start: during } = array[i];
 
-        if(Math.abs(during - linePosition) > 1) output += '.'
-        else output += '#'
+        if(Math.abs(during - linePosition) > 1) output += ' '
+        else output += '\u2588'
         if(linePosition == 39) output += '\n'
     }
     return output;
