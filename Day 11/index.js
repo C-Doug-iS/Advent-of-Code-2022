@@ -92,12 +92,16 @@ const partOneRounds = simulateRoundsPtOne(20)
 
 partOneRounds[partOneRounds.length - 1].sort((a, b) => b.inspectedCount - a.inspectedCount)
 
+const [ptOneFirst, ptOneSecond, ...p1rest] = partOneRounds[partOneRounds.length - 1]
+
 const partTwoRounds = simulateRoundsPtTwo(10000)
 
 partTwoRounds[partTwoRounds.length - 1].sort((a, b) => b.inspectedCount - a.inspectedCount)
 
-const firstPuzzleSolution = partOneRounds[partOneRounds.length - 1][0].inspectedCount * partOneRounds[partOneRounds.length - 1][1].inspectedCount
-const secondPuzzleSolution = partTwoRounds[partTwoRounds.length - 1][0].inspectedCount * partTwoRounds[partTwoRounds.length - 1][1].inspectedCount
+const [ptTwoFirst, ptTwoSecond, ...p2rest] = partTwoRounds[partTwoRounds.length - 1]
+
+const firstPuzzleSolution = ptOneFirst.inspectedCount * ptOneSecond.inspectedCount
+const secondPuzzleSolution = ptTwoFirst.inspectedCount * ptTwoSecond.inspectedCount
 
 console.log(firstPuzzleSolution)
 console.log(secondPuzzleSolution)
